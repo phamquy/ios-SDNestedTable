@@ -235,6 +235,10 @@
 {
     NSIndexPath *groupCellIndexPath = [self.tableView indexPathForCell:cell];
     NSNumber *cellStateNumber = [NSNumber numberWithInt:cell.selectableCellState];
+    if(groupCellIndexPath == nil)
+    {
+        return;
+    }
     [selectableCellsState setObject:cellStateNumber forKey:groupCellIndexPath];
     
     //NSIndexPath *subCellIndexPath = [cell.subTable indexPathForCell:subCell];

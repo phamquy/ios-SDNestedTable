@@ -213,12 +213,16 @@
 {
     
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
     SDGroupCell *cell = (SDGroupCell *)[tableView cellForRowAtIndexPath:indexPath];
+    [self toggleCell: cell atIndexPath: indexPath];
+}
+
+- (void) toggleCell:(SDGroupCell *)cell atIndexPath: (NSIndexPath *) pathToToggle
+{
     [cell tapTransition];
     SelectableCellState cellState = [cell toggleCheck];
     NSNumber *cellStateNumber = [NSNumber numberWithInt:cellState];
-    [selectableCellsState setObject:cellStateNumber forKey:indexPath];
+    [selectableCellsState setObject:cellStateNumber forKey:pathToToggle];
     
     [cell subCellsToggleCheck];
     
@@ -231,26 +235,27 @@
 {
     NSIndexPath *groupCellIndexPath = [self.tableView indexPathForCell:cell];
     NSNumber *cellStateNumber = [NSNumber numberWithInt:cell.selectableCellState];
-    if(groupCellIndexPath != nil && cellStateNumber != nil)
+    if(groupCellIndexPath == nil)
     {
-        [selectableCellsState setObject:cellStateNumber forKey:groupCellIndexPath];
-        
-        //NSIndexPath *subCellIndexPath = [cell.subTable indexPathForCell:subCell];
-        NSNumber *subCellStateNumber = [NSNumber numberWithInt:subCell.selectableCellState];
-        if (![selectableSubCellsState objectForKey:groupCellIndexPath])
-        {
-            NSMutableDictionary *subCellState = [[NSMutableDictionary alloc] initWithObjectsAndKeys: subCellStateNumber, indexPath, nil];
-            [selectableSubCellsState setObject:subCellState forKey:groupCellIndexPath];
-        }
-        else
-        {
-            [[selectableSubCellsState objectForKey:groupCellIndexPath] setObject:subCellStateNumber forKey:indexPath];
-        }
-        
-        [cell setSelectableSubCellsState: [selectableSubCellsState objectForKey:groupCellIndexPath]];
-        
-        [self mainItem:cell subItemDidChange:subCell forTap:tapped];
+        return;
     }
+    [selectableCellsState setObject:cellStateNumber forKey:groupCellIndexPath];
+    
+    //NSIndexPath *subCellIndexPath = [cell.subTable indexPathForCell:subCell];
+    NSNumber *subCellStateNumber = [NSNumber numberWithInt:subCell.selectableCellState];
+    if (![selectableSubCellsState objectForKey:groupCellIndexPath])
+    {
+        NSMutableDictionary *subCellState = [[NSMutableDictionary alloc] initWithObjectsAndKeys: subCellStateNumber, indexPath, nil];
+        [selectableSubCellsState setObject:subCellState forKey:groupCellIndexPath];
+    }
+    else
+    {
+        [[selectableSubCellsState objectForKey:groupCellIndexPath] setObject:subCellStateNumber forKey:indexPath];
+    }
+    
+    [cell setSelectableSubCellsState: [selectableSubCellsState objectForKey:groupCellIndexPath]];
+    
+    [self mainItem:cell subItemDidChange:subCell forTap:tapped];
 }
 
 - (void) collapsableButtonTapped: (UIControl *) button withEvent: (UIEvent *) event
