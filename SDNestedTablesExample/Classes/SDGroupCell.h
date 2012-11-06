@@ -38,6 +38,8 @@ static const int subCellHeight = 40;
 - (void) rotateExpandBtnToExpanded;
 - (void) rotateExpandBtnToCollapsed;
 
+- (void) toggleCell:(SDSubCell *)cell atIndexPath: (NSIndexPath *) pathToToggle;
+
 + (int) getHeight;
 + (int) getsubCellHeight;
 

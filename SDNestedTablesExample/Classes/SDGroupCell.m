@@ -200,12 +200,19 @@
     {
         cell = (SDSubCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
     }
+    
+    [self toggleCell:cell atIndexPath:indexPath];
+}
+
+
+- (void) toggleCell:(SDSubCell *)cell atIndexPath: (NSIndexPath *) pathToToggle
+{
     [cell tapTransition];
     
     BOOL cellTapped;
     switch (subCellsCommand)
     {
-        // case parent cell is tapped
+            // case parent cell is tapped
         case AllSubCellsCommandChecked:
             cellTapped = NO;
             if (cell.selectableCellState == Unchecked)
@@ -222,8 +229,8 @@
                 selectedSubCellsAmt--;
             }
             break;
-        
-        // case specific cell is tapped
+            
+            // case specific cell is tapped
         default:
             cellTapped = YES;
             if ([cell toggleCheck])
@@ -256,7 +263,7 @@
             }
             break;
     }
-    [self.parentTable groupCell:self didSelectSubCell:cell withIndexPath:indexPath andWithTap:cellTapped];
+    [self.parentTable groupCell:self didSelectSubCell:cell withIndexPath:pathToToggle andWithTap:cellTapped];
 }
 
 @end
