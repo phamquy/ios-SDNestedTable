@@ -44,9 +44,6 @@
     if((self = [super initWithCoder:aDecoder]))
     {
         subCellsCommand = AllSubCellsCommandNone;
-        
-        offCheckBox = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"blueLedBigOff"]];
-        onCheckBox = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"blueLedBig"]];
     }
     return self;
 }
@@ -61,6 +58,9 @@
     [expandBtn addTarget:self.parentTable action:@selector(collapsableButtonTapped:withEvent:) forControlEvents:UIControlEventTouchUpInside];
     [expandBtn addTarget:self action:@selector(rotateExpandBtn:) forControlEvents:UIControlEventTouchUpInside];
     expandBtn.alpha = 0.45;
+    
+    offCheckBox = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"blueLedBigOff"]];
+    onCheckBox = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"blueLedBig"]];
 }
 
 #pragma mark - behavior
@@ -200,12 +200,19 @@
     {
         cell = (SDSubCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
     }
+    
+    [self toggleCell:cell atIndexPath:indexPath];
+}
+
+
+- (void) toggleCell:(SDSubCell *)cell atIndexPath: (NSIndexPath *) pathToToggle
+{
     [cell tapTransition];
     
     BOOL cellTapped;
     switch (subCellsCommand)
     {
-        // case parent cell is tapped
+            // case parent cell is tapped
         case AllSubCellsCommandChecked:
             cellTapped = NO;
             if (cell.selectableCellState == Unchecked)
@@ -222,8 +229,8 @@
                 selectedSubCellsAmt--;
             }
             break;
-        
-        // case specific cell is tapped
+            
+            // case specific cell is tapped
         default:
             cellTapped = YES;
             if ([cell toggleCheck])
@@ -256,7 +263,7 @@
             }
             break;
     }
-    [self.parentTable groupCell:self didSelectSubCell:cell withIndexPath:indexPath andWithTap:cellTapped];
+    [self.parentTable groupCell:self didSelectSubCell:cell withIndexPath:pathToToggle andWithTap:cellTapped];
 }
 
 @end
