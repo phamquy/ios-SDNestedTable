@@ -45,7 +45,7 @@
 						<array class="NSMutableArray" key="NSSubviews">
 							<object class="IBUIView" id="505943474">
 								<reference key="NSNextResponder" ref="849007509"/>
-								<int key="NSvFlags">274</int>
+								<int key="NSvFlags">290</int>
 								<string key="NSFrameSize">{320, 50}</string>
 								<reference key="NSSuperview" ref="849007509"/>
 								<reference key="NSWindow"/>
@@ -82,7 +82,7 @@
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="8676206"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
-								<object class="NSColor" key="IBUIBackgroundColor" id="851485701">
+								<object class="NSColor" key="IBUIBackgroundColor" id="928776406">
 									<int key="NSColorSpace">3</int>
 									<bytes key="NSWhite">MCAwAA</bytes>
 								</object>
@@ -214,7 +214,7 @@
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="505943474"/>
 						<string key="NSReuseIdentifierKey">_NS:11</string>
-						<reference key="IBUIBackgroundColor" ref="851485701"/>
+						<reference key="IBUIBackgroundColor" ref="928776406"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">4</int>

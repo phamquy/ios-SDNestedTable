@@ -52,6 +52,10 @@
 {
     [super setupInterface];
     
+    CGRect bgrndFrame = self.backgroundView.frame;
+    bgrndFrame.size.height = 50;
+    self.backgroundView.frame = bgrndFrame;
+    
     expandBtn.frame = CGRectMake(0, 5, 40, 40);
     [expandBtn setBackgroundColor:[UIColor clearColor]];
     [expandBtn setImage:[UIImage imageNamed:@"disclosure"] forState:UIControlStateNormal];
