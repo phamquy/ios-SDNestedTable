@@ -165,11 +165,6 @@
     subCellsCommand = AllSubCellsCommandNone;
 }
 
-- (void) tapTransition
-{
-    [super tapTransition];
-}
-
 #pragma mark - Table view
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
