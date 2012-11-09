@@ -61,7 +61,18 @@
     [expandBtn setImage:[UIImage imageNamed:@"disclosure"] forState:UIControlStateNormal];
     [expandBtn addTarget:self.parentTable action:@selector(collapsableButtonTapped:withEvent:) forControlEvents:UIControlEventTouchUpInside];
     [expandBtn addTarget:self action:@selector(rotateExpandBtn:) forControlEvents:UIControlEventTouchUpInside];
-    expandBtn.alpha = 0.45;
+    if (self.selectableCellState == Checked)
+    {
+        expandBtn.alpha = 1.0;
+    }
+    else if (self.selectableCellState == Halfchecked)
+    {
+        expandBtn.alpha = 0.75;
+    }
+    else
+    {
+        expandBtn.alpha = 0.45;
+    }
     
     offCheckBox = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"blueLedBigOff"]];
     onCheckBox = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"blueLedBig"]];
