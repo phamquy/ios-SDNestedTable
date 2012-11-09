@@ -154,8 +154,6 @@
     [cell setParentTable: self];
     [cell setCellIndexPath:indexPath];
     
-    cell = [self mainTable:tableView setItem:cell forRowAtIndexPath:indexPath];
-    
     NSNumber *amt = [NSNumber numberWithInt:[self mainTable:tableView numberOfSubItemsforItem:cell atIndexPath:indexPath]];
     [subItemsAmt setObject:amt forKey:indexPath];
     
@@ -192,6 +190,8 @@
     {
         [cell rotateExpandBtnToCollapsed];
     }
+    
+    cell = [self mainTable:tableView setItem:cell forRowAtIndexPath:indexPath];
     
     [cell.subTable reloadData];
     
