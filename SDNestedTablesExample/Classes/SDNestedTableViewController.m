@@ -122,8 +122,6 @@
 	expandedIndexes = [[NSMutableDictionary alloc] init];
 	selectableCellsState = [[NSMutableDictionary alloc] init];
 	selectableSubCellsState = [[NSMutableDictionary alloc] init];
-    
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
