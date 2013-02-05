@@ -123,7 +123,6 @@
 	selectableCellsState = [[NSMutableDictionary alloc] init];
 	selectableSubCellsState = [[NSMutableDictionary alloc] init];
     
-    self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 

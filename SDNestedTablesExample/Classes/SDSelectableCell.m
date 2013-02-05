@@ -77,6 +77,7 @@
     checkBox.alpha = 1.0;
     itemText.alpha = 1.0;
     self.backgroundView.backgroundColor = UIColorFromRGBWithAlpha(0x0d2e4d, 1.0);
+    self.backgroundView.alpha = 0.7;
 }
 
 - (void) styleDisabled
@@ -86,6 +87,7 @@
     checkBox.alpha = 1.0;
     itemText.alpha = 0.4;
     self.backgroundView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:1.0];
+    self.backgroundView.alpha = 0.5;
 }
 
 - (void) styleHalfEnabled
@@ -95,6 +97,7 @@
     checkBox.alpha = 0.45;
     itemText.alpha = 0.7;
     self.backgroundView.backgroundColor = UIColorFromRGBWithAlpha(0x081c2f, 1.0);
+    self.backgroundView.alpha = 0.7;
 }
 
 - (void) tapTransition
